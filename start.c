@@ -5,8 +5,7 @@
 void spin(int pos) {
     unsigned short *kscreen = (unsigned short *)0xb8000UL;
     kscreen[pos] = 0x0700 | '0';
-    long n = kNumSpinIterations;
-    for (long i = 0; i < n; i++) {
+    for (int i = 0; i < kNumSpinIterations; i++) {
     }
     kscreen[pos] = 0x0700 | '1';
 }
