@@ -2,16 +2,18 @@
 
 #define kNumSpinIterations 10000000
 
-void spin(int pos) {
+void spin(int line) {
     unsigned short *kscreen = (unsigned short *)0xb8000UL;
-    kscreen[pos] = 0x0700 | '0';
+    int pos = line * 80;
     for (int i = 0; i < kNumSpinIterations; i++) {
+        if (i % (kNumSpinIterations/50) == 0) {
+            kscreen[pos++] = 0x0700 | '.';
+        }
     }
-    kscreen[pos] = 0x0700 | '1';
 }
 
 void spinwrapper(void) {
-    spin(1);
+    spin(21);
     while (1) {}
 }
 
@@ -56,7 +58,7 @@ void start64C(void) {
 
     picInit();
 
-    spin(0);
+    spin(20);
     InterruptStackFrame frame;
     frame.ss = 32 | 3;
     frame.cs = 24 | 3;
