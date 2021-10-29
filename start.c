@@ -14,7 +14,7 @@ void spin(int line) {
 
 void spinwrapper(void) {
     spin(21);
-    while (1) {}
+    while (1) {} // spin forever
 }
 
 typedef struct {

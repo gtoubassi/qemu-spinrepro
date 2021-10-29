@@ -1,12 +1,10 @@
 CC=x86_64-elf-gcc
 OBJ=obj
-KERNEL_LDFLAGS=--oformat binary -T linker.ld
-KERNEL_LINKER_SCRIPT_CPPFLAGS=-Isrc -P -x c -E
 
 AS=x86_64-elf-gcc
 ASFLAGS=-x assembler-with-cpp -c
-CPP=x86_64-elf-gcc
 LD=x86_64-elf-ld
+LDFLAGS=--oformat binary -T linker.ld
 
 KERNEL_OFILES=\
 	  $(OBJ)/boot.s.o\
@@ -21,7 +19,7 @@ run: $(OBJ)/kernel.img
 
 $(OBJ)/kernel.img: $(KERNEL_OFILES)
 	@mkdir -p $(@D)
-	$(LD) $(KERNEL_LDFLAGS) -o $@ $(KERNEL_OFILES)
+	$(LD) $(LDFLAGS) -o $@ $(KERNEL_OFILES)
 
 .PHONY: clean
 clean:
