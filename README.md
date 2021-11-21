@@ -1,6 +1,6 @@
 # Spin Loop Repro
 
-*UPDATE* Debugging into the reason for this issue is detailed in [this qemu-discuss thread](https://lists.nongnu.org/archive/html/qemu-discuss/2021-11/msg00068.html).
+**UPDATE** Debugging into the reason for this issue is detailed in [this qemu-discuss thread](https://lists.nongnu.org/archive/html/qemu-discuss/2021-11/msg00068.html).
 
 This repo reproduces a case of a spin loop in kernel (ring 0) mode being emulated 100x slower than the same loop run in
 user mode (ring 3) in qemu-system-x86_64 on a Mac (uname -a: Darwin xyz-mbp.lan 20.5.0 Darwin Kernel Version 20.5.0: Sat May  8 05:10:33 PDT 2021; root:xnu-7195.121.3~9/RELEASE_X86_64 x86_64
